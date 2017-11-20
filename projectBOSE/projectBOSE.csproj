@@ -92,30 +92,24 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\HistoryFields.cs" />
+    <Compile Include="ClientAuthentication\ClientAuthenticator.cs" />
+    <Compile Include="ClientAuthentication\ISender.cs" />
     <Compile Include="Controls\UserControl3Buttons.xaml.cs">
       <DependentUpon>UserControl3Buttons.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\UserControlAuthentication.xaml.cs">
       <DependentUpon>UserControlAuthentication.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\UserControlPay.xaml.cs">
-      <DependentUpon>UserControlPay.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\AuthViewModel.cs" />
     <Compile Include="ViewModel\IAuthViewModel.cs" />
     <Compile Include="ViewModel\IMainViewModel.cs" />
     <Compile Include="ViewModel\IPage3ButtonsViewModel.cs" />
-    <Compile Include="ViewModel\IPayViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Page Include="Controls\UserControl3Buttons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\UserControlAuthentication.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\UserControlPay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,7 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewModel\Page3ButtonsViewModel.cs" />
-    <Compile Include="ViewModel\PayViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -157,7 +150,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="communal.db" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -169,7 +161,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ClientAuthentication\" />
     <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
