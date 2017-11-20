@@ -73,6 +73,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClientAuthentication\ClientAuthenticator.cs" />
+    <Compile Include="ClientAuthentication\ISender.cs" />
     <Compile Include="Controls\UserControl3Buttons.xaml.cs">
       <DependentUpon>UserControl3Buttons.xaml</DependentUpon>
     </Compile>
@@ -140,7 +142,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ClientAuthentication\" />
     <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

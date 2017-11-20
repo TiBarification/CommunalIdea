@@ -25,7 +25,6 @@ namespace projectBOSE.ViewModel
             //_viewModelPage = pagesList[0];
             _viewModelPage = controlsList[0];
             ViewModelLocator.Instance.AuthenticationViewModel.Identifying += AuthenticationViewModel_Identifying;
-
         }
 
         void AuthenticationViewModel_Identifying(object sender, EventArgs e)
