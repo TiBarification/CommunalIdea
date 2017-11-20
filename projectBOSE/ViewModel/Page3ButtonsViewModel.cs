@@ -39,11 +39,13 @@ namespace projectBOSE.ViewModel
             }
         }
 
-
+        public event EventHandler OnPaymentClicked;
 
         private void PaymentCommandMethod()
         {
-
+            // Show control `UserControlPay`
+            if (OnPaymentClicked == null) return;
+            OnPaymentClicked(this, new EventArgs());
         }
 
         private void PayersCommandMethod()

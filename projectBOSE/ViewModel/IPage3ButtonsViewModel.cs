@@ -4,6 +4,7 @@
 //using System.Text;
 //using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
+using System;
 
 namespace projectBOSE.ViewModel
 {
@@ -12,5 +13,7 @@ namespace projectBOSE.ViewModel
         RelayCommand PaymentCommand { get; }
         RelayCommand PayersCommand { get; }
         RelayCommand SettingsCommand { get; }
+
+        event EventHandler OnPaymentClicked;
     }
 }

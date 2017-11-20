@@ -25,12 +25,17 @@ namespace projectBOSE.ViewModel
             //_viewModelPage = pagesList[0];
             _viewModelPage = controlsList[0];
             ViewModelLocator.Instance.AuthenticationViewModel.Identifying += AuthenticationViewModel_Identifying;
-
+            ViewModelLocator.Instance.Page3ButtonsViewModel.OnPaymentClicked += Page3ButtonsViewModel_OnPaymentClicked;
         }
 
         void AuthenticationViewModel_Identifying(object sender, EventArgs e)
         {
             ViewModelPage = controlsList[1];
+        }
+
+        void Page3ButtonsViewModel_OnPaymentClicked(object sender, EventArgs e)
+        {
+            ViewModelPage = controlsList[2];
         }
 
 
@@ -52,7 +57,7 @@ namespace projectBOSE.ViewModel
         //          }));
         //    }
         //}
-        
+
         //public event PropertyChangedEventHandler PropertyChanged;
         //public void OnPropertyChanged([CallerMemberName]string prop = "")
         //{
@@ -62,7 +67,12 @@ namespace projectBOSE.ViewModel
 
 
         //private List<Page> pagesList = new List<Page>() {new PageAuthentication(), new Page3Buttons() };
-        private List<UserControl> controlsList = new List<UserControl>() { new Controls.UserControlAuthentication(), new Controls.UserControl3Buttons() };
+        private List<UserControl> controlsList = new List<UserControl>() {
+            new Controls.UserControlAuthentication(),
+            new Controls.UserControl3Buttons(),
+            // add pay control
+            new Controls.UserControlPay(),
+        };
 
         /// <summary>
         /// The <see cref="ViewModelPage" /> property's name.

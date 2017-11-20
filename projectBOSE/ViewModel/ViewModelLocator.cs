@@ -45,6 +45,7 @@ namespace projectBOSE.ViewModel
             SimpleIoc.Default.Register<IMainViewModel, MainViewModel>();
             SimpleIoc.Default.Register<IAuthViewModel, AuthViewModel>();
             SimpleIoc.Default.Register<IPage3ButtonsViewModel, Page3ButtonsViewModel>();
+            SimpleIoc.Default.Register<IPayViewModel, PayViewModel>();
 
             //SimpleIoc.Default.Register<ITimeViewModel>(() => new TimeViewModel() { BottomLabelText = "", DateProperty = DateTime.Now }, "PC");
             //SimpleIoc.Default.Register<ITimeViewModel>(() => new TimeViewModel() { BottomLabelText = "", DateProperty = null }, "PRS");
