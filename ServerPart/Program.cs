@@ -10,6 +10,8 @@ namespace ServerPart
     {
         static void Main(string[] args)
         {
+            SocketServer server = new SocketServer();
+            server.Listen();
         }
     }
 }
