@@ -38,7 +38,6 @@ namespace projectBOSE.ViewModel
             ViewModelPage = controlsList[2];
         }
 
-
         // команда добавления нового объекта
         //private RelayCommand auth_Command;
         //public RelayCommand AuthCommand
@@ -57,7 +56,7 @@ namespace projectBOSE.ViewModel
         //          }));
         //    }
         //}
-
+        
         //public event PropertyChangedEventHandler PropertyChanged;
         //public void OnPropertyChanged([CallerMemberName]string prop = "")
         //{
