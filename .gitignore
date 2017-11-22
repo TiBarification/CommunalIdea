@@ -187,4 +187,7 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
-/.vs/projectBOSE/v15/sqlite3/storage.ide
+
+# Visual studio cache options directory
+.vs/
+.vs/**/storage.ide
