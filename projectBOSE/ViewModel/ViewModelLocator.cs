@@ -46,6 +46,8 @@ namespace projectBOSE.ViewModel
             SimpleIoc.Default.Register<IAuthViewModel, AuthViewModel>();
             SimpleIoc.Default.Register<IPage3ButtonsViewModel, Page3ButtonsViewModel>();
 
+            SimpleIoc.Default.Register<IPaymentViewModel, PaymentViewModel>();
+            SimpleIoc.Default.Register<IPayersViewModel, PayersViewModel>();
             //SimpleIoc.Default.Register<ITimeViewModel>(() => new TimeViewModel() { BottomLabelText = "", DateProperty = DateTime.Now }, "PC");
             //SimpleIoc.Default.Register<ITimeViewModel>(() => new TimeViewModel() { BottomLabelText = "", DateProperty = null }, "PRS");
         }
@@ -59,6 +61,7 @@ namespace projectBOSE.ViewModel
             }
             instance = this;
         }
+
 
         /// <summary>
         /// Gets the Main property.
@@ -90,6 +93,22 @@ namespace projectBOSE.ViewModel
             }
         }
 
+        public IPaymentViewModel PaymentViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<IPaymentViewModel>();
+            }
+        }
+
+        public IPayersViewModel PayersViewModel
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<IPayersViewModel>();
+            }
+        }
+
         //public ITimeViewModel PCTimeViewModel
         //{
         //    get
@@ -98,69 +117,6 @@ namespace projectBOSE.ViewModel
         //    }
         //}
 
-        //public ITimeViewModel PRSTimeViewModel
-        //{
-        //    get
-        //    {
-        //        return ServiceLocator.Current.GetInstance<ITimeViewModel>("PRS");
-        //    }
-        //}
-
-        //public IPRSDatabaseViewModel PRSDatabaseViewModel
-        //{
-        //    get
-        //    {
-        //        return ServiceLocator.Current.GetInstance<IPRSDatabaseViewModel>();
-        //    }
-        //}
-
-        //public IMarksDatabaseViewModel MarksDatabaseViewModel
-        //{
-        //    get
-        //    {
-        //        return ServiceLocator.Current.GetInstance<IMarksDatabaseViewModel>();
-        //    }
-        //}
-
-        //public IEventsViewModel EventsViewModel
-        //{ 
-        //    get
-        //    {
-        //        return ServiceLocator.Current.GetInstance<IEventsViewModel>();
-        //    }
-        //}
-
-        //public IStatisticsControlViewModel StatisticsControlViewModel
-        //{
-        //    get
-        //    {
-        //        return ServiceLocator.Current.GetInstance<IStatisticsControlViewModel>();
-        //    }
-        //}
-
-        //public IConnectedPRSViewModel ConnectedPRSViewModel
-        //{
-        //    get
-        //    {
-        //        return ServiceLocator.Current.GetInstance<IConnectedPRSViewModel>();
-        //    }
-        //}
-
-        //public IDbService DatabaseService
-        //{
-        //    get
-        //    {
-        //        return ServiceLocator.Current.GetInstance<IDbService>();
-        //    }
-        //}
-
-        //public IComPortService ComPortService
-        //{
-        //    get
-        //    {
-        //        return ServiceLocator.Current.GetInstance<IComPortService>();
-        //    }
-        //}
 
         //public void RunOperationAsynchronously(Action action)
         //{
