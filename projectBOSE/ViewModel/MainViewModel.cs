@@ -25,13 +25,30 @@ namespace projectBOSE.ViewModel
             //_viewModelPage = pagesList[0];
             _viewModelPage = controlsList[0];
             ViewModelLocator.Instance.AuthenticationViewModel.Identifying += AuthenticationViewModel_Identifying;
+            ViewModelLocator.Instance.Page3ButtonsViewModel.paymentPressed += Page3ButtonsViewModel_paymentPressed;
+
+        }
+
+        private PaymentWindow paymentWindow;
+
+        void Page3ButtonsViewModel_paymentPressed(object sender, EventArgs e)
+        {
+            if (paymentWindow != null) return;
+            paymentWindow = new PaymentWindow();
+            paymentWindow.Closed += paymentWindow_Closed;
+            paymentWindow.Show();
+        }
+
+        void paymentWindow_Closed(object sender, EventArgs e)
+        {
+            paymentWindow.Closed -= paymentWindow_Closed;
+            paymentWindow = null;
         }
 
         void AuthenticationViewModel_Identifying(object sender, EventArgs e)
         {
             ViewModelPage = controlsList[1];
         }
-
 
         // команда добавления нового объекта
         //private RelayCommand auth_Command;

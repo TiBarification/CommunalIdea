@@ -40,10 +40,11 @@ namespace projectBOSE.ViewModel
         }
 
 
-
+        public event EventHandler paymentPressed;
         private void PaymentCommandMethod()
         {
-
+            if (paymentPressed == null) return;
+            paymentPressed(this, new EventArgs());
         }
 
         private void PayersCommandMethod()
