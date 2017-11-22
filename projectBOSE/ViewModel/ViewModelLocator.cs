@@ -46,7 +46,6 @@ namespace projectBOSE.ViewModel
             SimpleIoc.Default.Register<IMainViewModel, MainViewModel>();
             SimpleIoc.Default.Register<IAuthViewModel, AuthViewModel>();
             SimpleIoc.Default.Register<IPage3ButtonsViewModel, Page3ButtonsViewModel>();
-            SimpleIoc.Default.Register<IPayViewModel, PayViewModel>();
 
             SimpleIoc.Default.Register<IPaymentViewModel, PaymentViewModel>();
             SimpleIoc.Default.Register<IPayersViewModel, PayersViewModel>();
