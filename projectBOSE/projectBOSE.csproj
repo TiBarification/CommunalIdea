@@ -112,6 +112,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\HistoryFields.cs" />
+    <Compile Include="ClientAuthentication\ClientAuthenticator.cs" />
+    <Compile Include="ClientAuthentication\ISender.cs" />
     <Compile Include="Controls\UserControl3Buttons.xaml.cs">
       <DependentUpon>UserControl3Buttons.xaml</DependentUpon>
     </Compile>

@@ -17,6 +17,7 @@ using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using projectBOSE.ClientAuthentication;
 
 namespace projectBOSE.ViewModel
 {

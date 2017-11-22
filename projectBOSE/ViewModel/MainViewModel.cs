@@ -50,7 +50,6 @@ namespace projectBOSE.ViewModel
             ViewModelPage = controlsList[1];
         }
 
-
         // команда добавления нового объекта
         //private RelayCommand auth_Command;
         //public RelayCommand AuthCommand
