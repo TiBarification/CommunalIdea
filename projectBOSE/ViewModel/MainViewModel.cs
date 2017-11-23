@@ -24,6 +24,7 @@ namespace projectBOSE.ViewModel
         {
             //_viewModelPage = pagesList[0];
             _viewModelPage = controlsList[0];
+            // Подписка на обработчики событий
             ViewModelLocator.Instance.AuthenticationViewModel.Identifying += AuthenticationViewModel_Identifying;
             ViewModelLocator.Instance.Page3ButtonsViewModel.paymentPressed += Page3ButtonsViewModel_paymentPressed;
 

@@ -32,7 +32,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Авторизація"  FontSize="20"/>
                 <TextBlock Grid.Row="1" Margin="20,0,0,6" VerticalAlignment="Bottom" Text="Ім'я" FontSize="20"/>
-                <TextBox Grid.Row="2" Text="{Binding UsernameString}" Margin="20,0"/>
+                <TextBox Name="textBoxLogin" Grid.Row="2" Text="{Binding UsernameString}" Margin="20,0"/>
                 <TextBlock Grid.Row="3" Margin="20,0,0,0" VerticalAlignment="Center" Text="Пароль" FontSize="20"/>
                 <TextBox Name="textBoxPassword" Grid.Row="4" Text="{Binding PasswordString}" Margin="20,0"/>
                 <Button Name="btnOK" Grid.Row="5" Command="{Binding LoginCommand}" Content="OK" Style="{StaticResource ResourceKey=VS2012WindowStyleTitleBarButton}" Margin="20,10" Click="btnOK_Click"/>
