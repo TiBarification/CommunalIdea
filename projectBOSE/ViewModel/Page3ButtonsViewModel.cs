@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using projectBOSE.Model.Database;
 
 namespace projectBOSE.ViewModel
 {
@@ -49,7 +50,7 @@ namespace projectBOSE.ViewModel
 
         private void PayersCommandMethod()
         {
-
+            MainDataBaseWork mdb = new MainDataBaseWork();
         }
         private void SettingsCommandMethod()
         {

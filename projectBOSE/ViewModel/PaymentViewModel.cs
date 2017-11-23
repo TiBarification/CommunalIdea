@@ -6,18 +6,26 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using projectBOSE.Model.Database;
+using projectBOSE.Common;
 
 namespace projectBOSE.ViewModel
 {
     class PaymentViewModel : ViewModelBase, IPaymentViewModel
     {
-
-
+        MainDataBaseWork gsc;
+        List<Services> lServices;
+        public PaymentViewModel()
+        {
+            gsc = new MainDataBaseWork();
+            lServices = gsc.GetServicesCollection();
+        }
+        
         /// <summary>
         /// The <see cref="TypesOfServices" /> property's name.
         /// </summary>
         public const string TypesOfServicesPropertyName = "TypesOfServices";
-        private ObservableCollection<string> _typesOfServices = new ObservableCollection<string> 
+        /*private ObservableCollection<string> _typesOfServices = new ObservableCollection<string> 
             {
                 "Централізоване постачання холодної води",
 	            "Централізоване водовідведення (Каналізація)",
@@ -37,7 +45,7 @@ namespace projectBOSE.ViewModel
 	            "Прибирання і вивезення снігу",
 	            "Енергопостачання ліфтів",
 	            "Інше технічне обслуговування внутрішньобудинкових систем"
-            };
+            };*/
 
         /// <summary>
         /// Сумма
@@ -46,16 +54,17 @@ namespace projectBOSE.ViewModel
         {
             get
             {
-                return _typesOfServices;
+                return gsc.servicetypes;
+                //return _typesOfServices;
             }
 
-            set
+            /*set
             {
-                if (_typesOfServices == value)
+                if (gsc.servicetypes == value)
                     return;
-                _typesOfServices = value;
+                gsc.servicetypes = value;
                 RaisePropertyChanged(TypesOfServicesPropertyName);
-            }
+            }*/
         }
 
         /// <summary>
@@ -170,9 +179,40 @@ namespace projectBOSE.ViewModel
             }
         }
 
+        /// <summary>
+        /// The <see cref="ServiceValueString" /> property's name.
+        /// </summary>
+        public const string ServiceValuePropertyName = "ServiceValue";
+        private string _serviceValue = null;
+
+        /// <summary>
+        /// Сумма
+        /// </summary>
+        public string ServiceValue
+        {
+            get
+            {
+                return _serviceValue;
+            }
+
+            set
+            {
+                if (_serviceValue == value)
+                    return;
+                _serviceValue = value;
+                RaisePropertyChanged(ServiceValuePropertyName);
+            }
+        }
+
         private void PayCommandMethod()
         {
-            /*--Проверка username и password--*/
+            // Оплата
+            if (_serviceValue != null)
+            {
+                // Get selected service
+                var service = lServices.Select(x => x).Where(y => y.name.Equals(_serviceValue)).First();
+                
+            }
 
             //if (Identifying == null) return;
             //Identifying(this, new EventArgs());
