@@ -1,4 +1,4 @@
-﻿//using System;
+﻿using System;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
@@ -12,5 +12,7 @@ namespace projectBOSE.ViewModel
         RelayCommand PaymentCommand { get; }
         RelayCommand PayersCommand { get; }
         RelayCommand SettingsCommand { get; }
+
+        event EventHandler paymentPressed;
     }
 }
