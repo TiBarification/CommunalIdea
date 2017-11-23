@@ -20,8 +20,8 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="1" Grid.Row="1" FontSize="17" Command="{Binding PaymentCommand}" Style="{StaticResource ResourceKey=VS2012WindowStyleTitleBarButton}" Content="Оплата" />
-        <Button Grid.Column="2" Grid.Row="1" FontSize="17" Command="{Binding PayersCommand}" Style="{StaticResource ResourceKey=VS2012WindowStyleTitleBarButton}" Content="Платники" />
-        <Button Grid.Column="3" Grid.Row="1" FontSize="17" Command="{Binding SettingsCommand}" Style="{StaticResource ResourceKey=VS2012WindowStyleTitleBarButton}" Content="Налаштування" />
+        <Button Margin="0,0,10,0" Grid.Column="1" Grid.Row="1" FontSize="17" Command="{Binding PaymentCommand}" Style="{StaticResource ResourceKey=VS2012WindowStyleTitleBarButton}" Content="Оплата" />
+        <Button Margin="0,0,10,0" Grid.Column="2" Grid.Row="1" FontSize="17" Command="{Binding PayersCommand}" Style="{StaticResource ResourceKey=VS2012WindowStyleTitleBarButton}" Content="Платники" />
+        <Button Margin="0,0,10,0" Grid.Column="3" Grid.Row="1" FontSize="17" Command="{Binding SettingsCommand}" Style="{StaticResource ResourceKey=VS2012WindowStyleTitleBarButton}" Content="Налаштування" />
     </Grid>
 </UserControl>

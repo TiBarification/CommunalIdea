@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using projectBOSE.ClientAuthentication;
 
 namespace projectBOSE.ViewModel
 {
     class AuthViewModel : ViewModelBase, IAuthViewModel
     {
+        ClientAuthenticator authenticator;
         public AuthViewModel()
         {
 
@@ -79,13 +81,12 @@ namespace projectBOSE.ViewModel
 
         private void LoginCommandMethod()
         {
+            authenticator = new ClientAuthenticator();
             /*--Проверка username и password--*/
-
+            bool auth = authenticator.Authenticate(this._usernameString, this._passwordString);
+            
             if (Identifying == null) return;
             Identifying(this, new EventArgs());            
         }
-       
-
-
     }
 }
