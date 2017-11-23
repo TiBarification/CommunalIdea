@@ -27,7 +27,7 @@ namespace projectBOSE.Controls
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            // Убрать фокус с полей ввода
+            //// Убрать фокус с полей ввода
             textBoxPassword.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             textBoxLogin.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
         }

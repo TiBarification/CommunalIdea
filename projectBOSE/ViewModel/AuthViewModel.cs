@@ -81,14 +81,14 @@ namespace projectBOSE.ViewModel
 
         private void LoginCommandMethod()
         {
-            /*--Проверка username и password--*/
-            if (this._passwordString == null || this._usernameString == null || this._passwordString == String.Empty || this._usernameString == String.Empty) // Решена проблема с фокусами
-                return;
+            ///*--Проверка username и password--*/
+            //if (this._passwordString == null || this._usernameString == null || this._passwordString == String.Empty || this._usernameString == String.Empty) // Решена проблема с фокусами
+            //    return;
 
-            authenticator = new ClientAuthenticator(); // Коннект к серверу
+            //authenticator = new ClientAuthenticator(); // Коннект к серверу
 
-            if (!authenticator.Authenticate(this._usernameString, this._passwordString))
-                return;
+            //if (!authenticator.Authenticate(this._usernameString, this._passwordString))
+            //    return;
             
             if (Identifying == null) return;
             Identifying(this, new EventArgs());            
