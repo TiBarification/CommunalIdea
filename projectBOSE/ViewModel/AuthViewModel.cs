@@ -89,7 +89,7 @@ namespace projectBOSE.ViewModel
 
             //if (!authenticator.Authenticate(this._usernameString, this._passwordString))
             //    return;
-            
+
             if (Identifying == null) return;
             Identifying(this, new EventArgs());            
         }

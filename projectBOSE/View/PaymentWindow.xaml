@@ -22,7 +22,7 @@
         <Label Content="ПІБ"/>
         <TextBox Text="{Binding FullNamePayer}"/>
         <Label Content="Вид послуги"/>
-        <ComboBox Height="30" Margin="10,2,10,5" ItemsSource="{Binding TypesOfServices}" SelectedValue="{Binding ServiceValue, Mode=OneWay}"/>
+        <ComboBox Height="30" Margin="10,2,10,5" ItemsSource="{Binding TypesOfServices}" SelectedValue="{Binding ServiceValue, Mode=TwoWay}"/>
         <Label Content="Рахунок отримувача" />
         <TextBox PreviewTextInput="RichTextBox_PreviewTextInput"  Text="{Binding ReceiverAccount}"  />
         <!--<Label Content="Отримувач"/>-->

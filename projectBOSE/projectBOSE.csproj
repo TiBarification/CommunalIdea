@@ -98,6 +98,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClientAuthentication\MD5Hasher.cs" />
     <Compile Include="Common\Client.cs" />
     <Compile Include="Common\HistoryFields.cs" />
     <Compile Include="ClientAuthentication\ClientAuthenticator.cs" />
@@ -109,6 +110,8 @@
     <Compile Include="Controls\UserControlAuthentication.xaml.cs">
       <DependentUpon>UserControlAuthentication.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Database\ClientWorker.cs" />
+    <Compile Include="Model\Database\HistoryWorker.cs" />
     <Compile Include="Model\Database\MainDataBaseWork.cs" />
     <Compile Include="ViewModel\AuthViewModel.cs" />
     <Compile Include="ViewModel\IAuthViewModel.cs" />

@@ -13,7 +13,7 @@ namespace projectBOSE.ViewModel
     {
         RelayCommand PayCommand { get; }
         string AmountString { get; set; }
-        string PersonalAccount { get; set; }
+        ulong ? PersonalAccount { get; set; }
         string FullNamePayer { get; set; }
         string ReceiverAccount { get; set; }
         ObservableCollection<string> TypesOfServices { get; }

@@ -13,12 +13,14 @@ namespace projectBOSE.ViewModel
 {
     class PaymentViewModel : ViewModelBase, IPaymentViewModel
     {
-        MainDataBaseWork gsc;
+        MainDataBaseWork mainDataBaseWwork;
+        ClientWorker clientWorker;
         List<Services> lServices;
         public PaymentViewModel()
         {
-            gsc = new MainDataBaseWork();
-            lServices = gsc.GetServicesCollection();
+            mainDataBaseWwork = new MainDataBaseWork();
+            clientWorker = new ClientWorker();
+            lServices = mainDataBaseWwork.GetServicesCollection();
         }
         
         /// <summary>
@@ -54,7 +56,7 @@ namespace projectBOSE.ViewModel
         {
             get
             {
-                return gsc.servicetypes;
+                return mainDataBaseWwork.servicetypes;
                 //return _typesOfServices;
             }
 
@@ -121,18 +123,17 @@ namespace projectBOSE.ViewModel
         /// The <see cref="PersonalAccount" /> property's name.
         /// </summary>
         public const string PersonalAccountPropertyName = "PersonalAccount";
-        private string _personalAccount = null;
+        private ulong ? _personalAccount = null;
 
         /// <summary>
         /// Сумма
         /// </summary>
-        public string PersonalAccount
+        public ulong ? PersonalAccount
         {
             get
             {
                 return _personalAccount;
             }
-
             set
             {
                 if (_personalAccount == value)
@@ -167,7 +168,6 @@ namespace projectBOSE.ViewModel
                 RaisePropertyChanged(AmountStringPropertyName);
             }
         }
-
 
 
         RelayCommand _payCommand;
@@ -211,6 +211,20 @@ namespace projectBOSE.ViewModel
             {
                 // Get selected service
                 var service = lServices.Select(x => x).Where(y => y.name.Equals(_serviceValue)).First();
+                
+                int service_id = service.id; // тип услуги    
+                string by_date = DateTime.Now.ToString(); // дата оплаты
+                ulong receiver = ClientWorker.recieverAccount;
+                string paid = this._serviceValue; // оплаченная сумма за услугу
+
+                Client client = clientWorker.ReturnClientByAccount(this._personalAccount);
+                int client_id;
+                if (client != null)
+                {
+                    client_id = client.id; // TODO Add to data base
+
+                }
+                
                 
             }
 

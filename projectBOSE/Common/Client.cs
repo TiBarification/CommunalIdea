@@ -6,13 +6,24 @@ using System.Threading.Tasks;
 
 namespace projectBOSE.Common
 {
+    /// <summary>
+    /// Описывает клиента
+    /// </summary>
     public class Client
     {
-        public int id { get; set; }
-        public long accountid { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public int age { get; set; }
-        public double balance { get; set; }
+        public int id;
+        public long accountid;
+        public string firstname;
+        public string lastname;
+        public int age;
+
+        public Client(int id, long accountid, string firstname, string lastname, int age)
+        {
+            this.id = id;
+            this.accountid = accountid;
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.age = age;
+        }
     }
 }

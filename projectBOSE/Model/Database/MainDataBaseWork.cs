@@ -11,6 +11,7 @@ namespace projectBOSE.Model.Database
 {
     public class MainDataBaseWork
     {
+        public const int RECEIVER =2 ;
         private const string _dbpath = "../../Database/communal.db";
         public ObservableCollection<string> servicetypes { get; private set; }
 
