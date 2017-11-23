@@ -83,7 +83,8 @@ namespace projectBOSE.ViewModel
         {
             authenticator = new ClientAuthenticator();
             /*--Проверка username и password--*/
-            bool auth = authenticator.Authenticate(this._usernameString, this._passwordString);
+            if (!authenticator.Authenticate(this._usernameString, this._passwordString))
+                return;
             
             if (Identifying == null) return;
             Identifying(this, new EventArgs());            

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace projectBOSE.ClientAuthentication
 {
@@ -53,23 +54,27 @@ namespace projectBOSE.ClientAuthentication
         public bool Authenticate(string login, string password)
         {
             // Отправка данных на сервер
-            byte[] dataToAuth = Encoding.Unicode.GetBytes(login + '\t' + password);
-            this.netStream.Write(dataToAuth, 0, dataToAuth.Length);
-
-            // Получение разрешения от сервера
-            byte[] dataFromServer = new byte[1]; // Массив с ответом
-            int bytesReceivedCount = 0;
-            // Ответ от сервера
-            do
+            using (MD5 md5Hash = MD5.Create())
             {
-                bytesReceivedCount = netStream.Read(dataFromServer, 0, dataFromServer.Length);
-            }
-            while (netStream.DataAvailable);
+                string encryptedPasswword = MD5Hasher.GetMd5Hash(md5Hash, password); // Шифровка пароля
+                byte[] dataToAuth = Encoding.Unicode.GetBytes(login + '\t' + encryptedPasswword);
+                this.netStream.Write(dataToAuth, 0, dataToAuth.Length);
 
-            if (dataFromServer[0] == 1)
-                return true;
-            else
-                return false;
+                // Получение разрешения от сервера
+                byte[] dataFromServer = new byte[1]; // Массив с ответом
+                int bytesReceivedCount = 0;
+                // Ответ от сервера
+                do
+                {
+                    bytesReceivedCount = netStream.Read(dataFromServer, 0, dataFromServer.Length);
+                }
+                while (netStream.DataAvailable);
+
+                if (dataFromServer[0] == 1)
+                    return true;
+                else
+                    return false;
+            }
         }
     }
 }

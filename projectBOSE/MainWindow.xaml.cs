@@ -24,8 +24,6 @@ namespace projectBOSE
         public MainWindow()
         {
             InitializeComponent();
-            
-
             Closing += (s, e) => ViewModelLocator.Cleanup();
         }
     }

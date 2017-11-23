@@ -20,37 +20,18 @@ namespace ServerPart
         public ClientAuth(TcpClient tcpClient)
         {
             this.tcpClient = tcpClient;
-        }       
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="md5Hash"></param>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        private string GetMd5Hash(MD5 md5Hash, string input)
-        {
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-            StringBuilder sBuilder = new StringBuilder();
-            for (int i = 0; i < data.Length; i++)
-                sBuilder.Append(data[i].ToString("x2"));
-
-            return sBuilder.ToString();
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="md5Hash"></param>
         /// <param name="input"></param>
         /// <param name="hash"></param>
         /// <returns></returns>
-        private bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
+        private bool VerifyMd5Hash(string input1, string input2)
         {
-            string hashOfInput = GetMd5Hash(md5Hash, input);
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
-            if (0 == comparer.Compare(hashOfInput, hash))
+            if (0 == comparer.Compare(input1, input2))
                 return true;
             else
                 return false;
@@ -112,18 +93,24 @@ namespace ServerPart
 
                 Console.WriteLine("Client {0} with password {1} connected!", logs[0], logs[1]);
 
-                using (MD5 md5Hash = MD5.Create())
-                {
-                    string userServerHash = GetPasswordWithLogin(logs[0]); // Пароль внутри сервера
+                string userServerHash = GetPasswordWithLogin(logs[0]); // Пароль внутри сервера
 
-                    // Отправляю клиенту массив из одного байта. 1 - удачная аутентификация, 2 - нет
-                    byte[] message = new byte[1];
-                    if (VerifyMd5Hash(md5Hash, logs[1], userServerHash)) // Сравниваю пороль из потока с внутренним
-                        message[0] = 1;
-                    else
-                        message[0] = 0;
-                    networkStream.Write(message, 0, message.Length);
+                // Отправляю клиенту массив из одного байта. 1 - удачная аутентификация, 2 - нет
+                byte[] message = new byte[1];
+                if (VerifyMd5Hash(logs[1], userServerHash)) // Сравниваю пороль из потока с внутренним
+                {
+                    message[0] = 1;
+                    Console.WriteLine("Client's password is right and he is in system.");
                 }
+                else
+                {
+                    message[0] = 0;
+                    Console.WriteLine("Client's password is bad and he is not in system.");
+                }
+
+                networkStream.Write(message, 0, message.Length);
+
+                Console.WriteLine("\n\n");
             }
             catch (Exception exception)
             {

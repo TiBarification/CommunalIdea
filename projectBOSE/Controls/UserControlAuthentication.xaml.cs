@@ -24,5 +24,10 @@ namespace projectBOSE.Controls
         {
             InitializeComponent();
         }
+
+        private void btnOK_Click(object sender, RoutedEventArgs e)
+        {
+            textBoxPassword.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+        }
     }
 }

@@ -11,12 +11,6 @@ namespace projectBOSE.ViewModel
 {
     class PayersViewModel : ViewModelBase, IPayersViewModel
     {
-
-
-
-
-
-
         RelayCommand _findPayerCommand;
         public RelayCommand FindPayerCommand
         {
