@@ -13,7 +13,7 @@ namespace projectBOSE.ViewModel
     {
         RelayCommand FindPayerCommand { get; }
         string PayerField { get; set; }
-        ObservableCollection<string> TypesOfServices { get; set;  }
+        ObservableCollection<string> TypesOfServices { get; set; }
         //string PersonalAccount { get; set; }
         //string FullNamePayer { get; set; }
         //string ReceiverAccount { get; set; }

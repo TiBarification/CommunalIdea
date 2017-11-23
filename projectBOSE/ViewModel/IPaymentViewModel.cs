@@ -16,6 +16,7 @@ namespace projectBOSE.ViewModel
         string PersonalAccount { get; set; }
         string FullNamePayer { get; set; }
         string ReceiverAccount { get; set; }
-        ObservableCollection<string> TypesOfServices { get; set; }
+        ObservableCollection<string> TypesOfServices { get; }
+        string ServiceValue { get; set; }
     }
 }

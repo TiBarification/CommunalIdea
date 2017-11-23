@@ -8,6 +8,7 @@ namespace projectBOSE.Common
 {
     public class HistoryFields
     {
+        // TODO Сменить под таблицу бд
         string service_name;
         string date;
         double debt;
