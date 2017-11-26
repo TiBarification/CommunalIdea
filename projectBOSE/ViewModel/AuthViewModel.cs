@@ -81,12 +81,12 @@ namespace projectBOSE.ViewModel
 
         private void LoginCommandMethod()
         {
-            authenticator = new ClientAuthenticator();
+           // authenticator = new ClientAuthenticator();
             /*--Проверка username и password--*/
-            bool auth = authenticator.Authenticate(this._usernameString, this._passwordString);
+            //bool auth = authenticator.Authenticate(this._usernameString, this._passwordString);
             
             if (Identifying == null) return;
-            Identifying(this, new EventArgs());            
+            Identifying(this, new EventArgs());
         }
     }
 }

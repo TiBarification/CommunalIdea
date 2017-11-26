@@ -6,38 +6,51 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using System.Windows;
 
 namespace projectBOSE.ViewModel
 {
     class PaymentViewModel : ViewModelBase, IPaymentViewModel
     {
 
+        public PaymentViewModel()
+        {
+            try
+            {
+                this.TypesOfServices = ViewModelLocator.Instance.DatabaseService.GetAllNamesSevices();
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.ToString());
+            }
+            //this.PropertyChanged += PRSDatabaseViewModel_PropertyChanged;
+        }
 
         /// <summary>
         /// The <see cref="TypesOfServices" /> property's name.
         /// </summary>
         public const string TypesOfServicesPropertyName = "TypesOfServices";
-        private ObservableCollection<string> _typesOfServices = new ObservableCollection<string> 
-            {
-                "Централізоване постачання холодної води",
-	            "Централізоване водовідведення (Каналізація)",
-                "Централізоване опаленн",
-                "Централізоване постачання гарячої води",
-	            "Електропостачання",
-                "Газопостачання",
-                "Вивезення побутових відходів",
-                "Прибирання прибудинкової території",
-                "Прибирання сходових клітин",
-                "Вивезення побутових відходів",
-                "Прибирання підвалу, технічних поверхів та покрівлі",
-                "Технічне обслуговування ліфтів",
-                "Обслуговування систем диспетчеризації",
-                "Поточний ремонт конструктивних елементів",
-	            "Поливання дворів, клумб і газонів",
-	            "Прибирання і вивезення снігу",
-	            "Енергопостачання ліфтів",
-	            "Інше технічне обслуговування внутрішньобудинкових систем"
-            };
+        private ObservableCollection<string> _typesOfServices = new ObservableCollection<string>();
+            //{
+            //    "Централізоване постачання холодної води",
+            //    "Централізоване водовідведення (Каналізація)",
+            //    "Централізоване опаленн",
+            //    "Централізоване постачання гарячої води",
+            //    "Електропостачання",
+            //    "Газопостачання",
+            //    "Вивезення побутових відходів",
+            //    "Прибирання прибудинкової території",
+            //    "Прибирання сходових клітин",
+            //    "Вивезення побутових відходів",
+            //    "Прибирання підвалу, технічних поверхів та покрівлі",
+            //    "Технічне обслуговування ліфтів",
+            //    "Обслуговування систем диспетчеризації",
+            //    "Поточний ремонт конструктивних елементів",
+            //    "Поливання дворів, клумб і газонів",
+            //    "Прибирання і вивезення снігу",
+            //    "Енергопостачання ліфтів",
+            //    "Інше технічне обслуговування внутрішньобудинкових систем"
+            //};
 
         /// <summary>
         /// Сумма

@@ -17,6 +17,7 @@ using Microsoft.Practices.ServiceLocation;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using projectBOSE.Model;
 using projectBOSE.ClientAuthentication;
 
 namespace projectBOSE.ViewModel
@@ -40,7 +41,7 @@ namespace projectBOSE.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            //SimpleIoc.Default.Register<IDbService, DbService>();
+            SimpleIoc.Default.Register<IDbService, DbService>();
             //SimpleIoc.Default.Register<IComPortService>(() => new ComPortService());
 
             SimpleIoc.Default.Register<IMainViewModel, MainViewModel>();
@@ -107,6 +108,14 @@ namespace projectBOSE.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<IPayersViewModel>();
+            }
+        }
+
+        public IDbService DatabaseService
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<IDbService>();
             }
         }
 
