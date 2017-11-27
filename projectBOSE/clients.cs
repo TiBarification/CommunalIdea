@@ -19,6 +19,5 @@ namespace projectBOSE
         public string firstname { get; set; }
         public string lastname { get; set; }
         public long age { get; set; }
-        public double balance { get; set; }
     }
 }

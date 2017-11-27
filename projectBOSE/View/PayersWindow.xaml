@@ -22,8 +22,19 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="130"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding }">
-            
+        <DataGrid Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding PayersHistory, Mode=TwoWay}" AutoGenerateColumns="True" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeColumns="False" SelectionMode="Single" IsReadOnly="True">
+            <DataGrid.Columns>
+                <!-- <DataGridTextColumn Header="Account Id"  Visibility="Visible"/>
+                <DataGridTextColumn Header="First name" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Last name" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Age" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Service" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Tariff" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Date" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Paid" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Receiver number" FontFamily="Arial"/> -->
+                
+            </DataGrid.Columns>
         </DataGrid>            
         <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding PayerField}" />
         <Button Grid.Row="1" Grid.Column="1" Content="Пошук" Command="{Binding FindPayerCommand}"/>

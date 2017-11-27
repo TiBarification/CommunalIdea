@@ -47,9 +47,11 @@ namespace projectBOSE.ViewModel
             paymentPressed(this, new EventArgs());
         }
 
+        public event EventHandler payersPressed;
         private void PayersCommandMethod()
         {
-
+            if (payersPressed == null) return;
+            payersPressed(this, new EventArgs());
         }
         private void SettingsCommandMethod()
         {

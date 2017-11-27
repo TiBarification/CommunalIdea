@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="communalModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\Мои документы\Projects_3rd_Course\Labs BOSE\projectBOSE\projectBOSE\Database\communal.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="communalModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=D:\Addons\GitHub\ProjectComunal\projectBOSE\Database\communal.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="clients">
           <Key>
             <PropertyRef Name="id" />
@@ -14,16 +14,16 @@
           <Property Name="firstname" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="lastname" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="age" Type="integer" Nullable="false" />
-          <Property Name="balance" Type="real" Nullable="false" />
         </EntityType>
         <EntityType Name="history">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="service_id" Type="integer" Nullable="false" />
-          <Property Name="client_id" Type="integer" Nullable="false" />
+          <Property Name="service_id" Type="integer" Nullable="false" StoreGeneratedPattern="None" />
+          <Property Name="client_id" Type="integer" Nullable="false" StoreGeneratedPattern="None" />
           <Property Name="by_date" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="receiver" Type="integer" Nullable="false" />
           <Property Name="paid" Type="real" Nullable="false" />
         </EntityType>
         <EntityType Name="services">
@@ -39,8 +39,7 @@
           <EntitySet Name="history" EntityType="Self.history" store:Type="Tables" />
           <EntitySet Name="services" EntityType="Self.services" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="communalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -53,17 +52,17 @@
           <Property Name="firstname" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="lastname" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="age" Type="Int64" Nullable="false" />
-          <Property Name="balance" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="history">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="service_id" Type="Int64" Nullable="false" />
-          <Property Name="client_id" Type="Int64" Nullable="false" />
+          <Property Name="service_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="client_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="by_date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="paid" Type="Double" Nullable="false" />
+          <Property Name="receiver" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="services">
           <Key>
@@ -92,13 +91,13 @@
                 <ScalarProperty Name="firstname" ColumnName="firstname" />
                 <ScalarProperty Name="lastname" ColumnName="lastname" />
                 <ScalarProperty Name="age" ColumnName="age" />
-                <ScalarProperty Name="balance" ColumnName="balance" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="history">
             <EntityTypeMapping TypeName="communalModel.history">
               <MappingFragment StoreEntitySet="history">
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="service_id" ColumnName="service_id" />
                 <ScalarProperty Name="client_id" ColumnName="client_id" />

@@ -6,17 +6,12 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using projectBOSE.Model;
 
 namespace projectBOSE.ViewModel
 {
     class PayersViewModel : ViewModelBase, IPayersViewModel
     {
-
-
-
-
-
-
         RelayCommand _findPayerCommand;
         public RelayCommand FindPayerCommand
         {
@@ -30,7 +25,7 @@ namespace projectBOSE.ViewModel
         /// The <see cref="PayerField" /> property's name.
         /// </summary>
         public const string PayerFieldPropertyName = "PayerField";
-        private string _fayerField = null;
+        private string _payerField = null;
 
         /// <summary>
         /// Сумма
@@ -39,36 +34,57 @@ namespace projectBOSE.ViewModel
         {
             get
             {
-                return _fayerField;
+                return _payerField;
             }
 
             set
             {
-                if (_fayerField == value)
+                if (_payerField == value)
                     return;
-                _fayerField = value;
+                _payerField = value;
                 RaisePropertyChanged(PayerFieldPropertyName);
             }
         }
 
-
-
-
-        public ObservableCollection<string> TypesOfServices
+        /// <summary>
+        /// The <see cref="PayersHistory" /> property's name.
+        /// </summary>
+        public const string PayersHistoryPropertyName = "PayersHistory";
+        private ObservableCollection<historyres> _payersHistory = ViewModelLocator.Instance.DatabaseService.GetHistoryByClient(73881762489);
+        public ObservableCollection<historyres> PayersHistory
         {
             get
             {
-                throw new NotImplementedException();
+                return _payersHistory;
             }
 
             set
             {
-                throw new NotImplementedException();
+                if (_payersHistory == value)
+                    return;
+                _payersHistory = value;
+                RaisePropertyChanged(PayersHistoryPropertyName);
             }
         }
 
         private void FindPayerCommandMethod()
         {
+            try
+            {
+                decimal value = Convert.ToDecimal(_payerField);
+                ObservableCollection<historyres> tempObj = ViewModelLocator.Instance.DatabaseService.GetHistoryByClient(value);
+                if (tempObj == null)
+                    System.Windows.MessageBox.Show("Client with id " + value + " is not found in system", "Warning", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
+                else
+                {
+                    _payersHistory = tempObj;
+                    RaisePropertyChanged(PayersHistoryPropertyName);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.ToString());
+            }
             /*--Проверка username и password--*/
 
             //if (Identifying == null) return;

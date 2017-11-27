@@ -19,5 +19,6 @@ namespace projectBOSE
         public long client_id { get; set; }
         public string by_date { get; set; }
         public double paid { get; set; }
+        public long receiver { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using projectBOSE.View;
 
 namespace projectBOSE.ViewModel
 {
@@ -26,7 +27,7 @@ namespace projectBOSE.ViewModel
             _viewModelPage = controlsList[0];
             ViewModelLocator.Instance.AuthenticationViewModel.Identifying += AuthenticationViewModel_Identifying;
             ViewModelLocator.Instance.Page3ButtonsViewModel.paymentPressed += Page3ButtonsViewModel_paymentPressed;
-
+            ViewModelLocator.Instance.Page3ButtonsViewModel.payersPressed += Page3ButtonsViewModel_payersPressed;
         }
 
         private PaymentWindow paymentWindow;
@@ -39,10 +40,25 @@ namespace projectBOSE.ViewModel
             paymentWindow.Show();
         }
 
+        private PayersWindow payersWindow;
+        void Page3ButtonsViewModel_payersPressed(object sender, EventArgs e)
+        {
+            if (payersWindow != null) return;
+            payersWindow = new PayersWindow();
+            payersWindow.Closed += payersWindow_Closed;
+            payersWindow.Show();
+        }
+
         void paymentWindow_Closed(object sender, EventArgs e)
         {
             paymentWindow.Closed -= paymentWindow_Closed;
             paymentWindow = null;
+        }
+
+        void payersWindow_Closed(object sender, EventArgs e)
+        {
+            payersWindow.Closed -= paymentWindow_Closed;
+            payersWindow = null;
         }
 
         void AuthenticationViewModel_Identifying(object sender, EventArgs e)

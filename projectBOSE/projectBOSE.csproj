@@ -129,6 +129,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\DbService.cs" />
+    <Compile Include="Model\historyres.cs" />
     <Compile Include="Model\IDbService.cs" />
     <Compile Include="services.cs">
       <DependentUpon>Model1.tt</DependentUpon>

@@ -14,5 +14,6 @@ namespace projectBOSE.ViewModel
         RelayCommand SettingsCommand { get; }
 
         event EventHandler paymentPressed;
+        event EventHandler payersPressed;
     }
 }

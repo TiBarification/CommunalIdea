@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using projectBOSE.Model;
 
 namespace projectBOSE.ViewModel
 {
@@ -13,7 +14,7 @@ namespace projectBOSE.ViewModel
     {
         RelayCommand FindPayerCommand { get; }
         string PayerField { get; set; }
-        ObservableCollection<string> TypesOfServices { get; set; }
+        ObservableCollection<historyres> PayersHistory { get; set; }
         //string PersonalAccount { get; set; }
         //string FullNamePayer { get; set; }
         //string ReceiverAccount { get; set; }

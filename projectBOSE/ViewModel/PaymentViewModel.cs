@@ -183,9 +183,41 @@ namespace projectBOSE.ViewModel
             }
         }
 
+        /// <summary>
+        /// The <see cref="SelectedService" /> property's name.
+        /// </summary>
+        public const string SelectedServicePropertyName = "SelectedService";
+        private string _selectedService = null;
+        public string SelectedService
+        {
+            get
+            {
+                return _selectedService;
+            }
+
+            set
+            {
+                _selectedService = value;
+                RaisePropertyChanged(SelectedServicePropertyName);
+            }
+        }
+
         private void PayCommandMethod()
         {
-            /*--Проверка username и password--*/
+            decimal accid = Convert.ToDecimal(_personalAccount);
+            long receiverid = Convert.ToInt64(_receiverAccount);
+            double payvalue = Convert.ToDouble(_amountString);
+            payvalue = Math.Round(payvalue, 2); // to prevent user from typing very long double values
+            // Check if user correctly filled fields
+            try
+            {
+                ViewModelLocator.Instance.DatabaseService.AddPaymentToDb(accid, _selectedService, receiverid, payvalue);
+                MessageBox.Show("All fine");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
 
             //if (Identifying == null) return;
             //Identifying(this, new EventArgs());
