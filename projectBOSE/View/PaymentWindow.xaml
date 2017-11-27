@@ -18,16 +18,18 @@
 
     <StackPanel>
         <Label Content="Розрахунковий рахунок"/>
-        <TextBox PreviewTextInput="RichTextBox_PreviewTextInput" Text="{Binding PersonalAccount}" />
+        <TextBox PreviewTextInput="RichTextBox_PreviewTextInput" VerticalContentAlignment="Center" Text="{Binding Path=PersonalAccount, UpdateSourceTrigger=PropertyChanged}" />
         <Label Content="ПІБ"/>
-        <TextBox Text="{Binding FullNamePayer}"/>
+        <TextBox Text="{Binding  Path=FullNamePayer, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
         <Label Content="Вид послуги"/>
-        <ComboBox Height="30" Margin="10,2,10,5" ItemsSource="{Binding TypesOfServices}" SelectedValue="{Binding SelectedService, Mode=TwoWay}"/>
+        <ComboBox Height="30" Margin="10,2,10,5" ItemsSource="{Binding TypesOfServices}" 
+                  VerticalContentAlignment="Center" 
+                  SelectedValue="{Binding SelectedService, Mode=TwoWay}"/>
         <Label Content="Рахунок отримувача" />
-        <TextBox PreviewTextInput="RichTextBox_PreviewTextInput"  Text="{Binding ReceiverAccount}"  />
+        <TextBox PreviewTextInput="RichTextBox_PreviewTextInput" VerticalContentAlignment="Center" Text="{Binding Path=ReceiverAccount, UpdateSourceTrigger=PropertyChanged}"  />
         <!--<Label Content="Отримувач"/>-->
         <Label Content="Сума"/>
-        <TextBox Text="{Binding AmountString}"/>
+        <TextBox Text="{Binding Path=AmountString, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
         <Button Content="Сплатити" Style="{StaticResource VS2012WindowStyleTitleBarButton}" Command="{Binding PayCommand}" 
                 FontSize="18" Height="45" Margin="10,15,10,0"/>
 

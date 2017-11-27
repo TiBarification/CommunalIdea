@@ -18,12 +18,12 @@ namespace projectBOSE.ViewModel
             try
             {
                 this.TypesOfServices = ViewModelLocator.Instance.DatabaseService.GetAllNamesSevices();
+                SelectedService = _typesOfServices[0];
             }
             catch (System.Exception ex)
             {
                 System.Windows.MessageBox.Show(ex.ToString());
             }
-            //this.PropertyChanged += PRSDatabaseViewModel_PropertyChanged;
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace projectBOSE.ViewModel
         /// The <see cref="ReceiverAccount" /> property's name.
         /// </summary>
         public const string ReceiverAccountPropertyName = "ReceiverAccount";
-        private string _receiverAccount = null;
+        private string _receiverAccount = String.Empty;
 
         /// <summary>
         /// Сумма
@@ -93,6 +93,7 @@ namespace projectBOSE.ViewModel
                     return;
                 _receiverAccount = value;
                 RaisePropertyChanged(ReceiverAccountPropertyName);
+                this.PayCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -125,7 +126,7 @@ namespace projectBOSE.ViewModel
         /// The <see cref="PersonalAccount" /> property's name.
         /// </summary>
         public const string PersonalAccountPropertyName = "PersonalAccount";
-        private string _personalAccount = null;
+        private string _personalAccount = String.Empty;
 
         /// <summary>
         /// Сумма
@@ -143,6 +144,7 @@ namespace projectBOSE.ViewModel
                     return;
                 _personalAccount = value;
                 RaisePropertyChanged(PersonalAccountPropertyName);
+                this.PayCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -151,7 +153,7 @@ namespace projectBOSE.ViewModel
         /// The <see cref="AmountString" /> property's name.
         /// </summary>
         public const string AmountStringPropertyName = "AmountString";
-        private string _amountString = null;
+        private string _amountString = String.Empty;
 
         /// <summary>
         /// Сумма
@@ -168,18 +170,24 @@ namespace projectBOSE.ViewModel
                 if (_amountString == value)
                     return;
                 _amountString = value;
+                this.PayCommand.RaiseCanExecuteChanged();
                 RaisePropertyChanged(AmountStringPropertyName);
             }
         }
 
-
+        private bool CanPayExecuted()
+        {
+            return ReceiverAccount.Length != 0
+                && PersonalAccount.Length != 0
+                && AmountString.Length != 0;
+        }
 
         RelayCommand _payCommand;
         public RelayCommand PayCommand
         {
             get
             {
-                return _payCommand ?? (_payCommand = new RelayCommand(this.PayCommandMethod));
+                return _payCommand ?? (_payCommand = new RelayCommand(this.PayCommandMethod, this.CanPayExecuted));
             }
         }
 
@@ -222,5 +230,8 @@ namespace projectBOSE.ViewModel
             //if (Identifying == null) return;
             //Identifying(this, new EventArgs());
         }
+
+
+
     }
 }

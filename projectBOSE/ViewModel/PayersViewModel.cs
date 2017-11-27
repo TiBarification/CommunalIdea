@@ -17,15 +17,34 @@ namespace projectBOSE.ViewModel
         {
             get
             {
-                return _findPayerCommand ?? (_findPayerCommand = new RelayCommand(FindPayerCommandMethod));
+                return _findPayerCommand ?? (_findPayerCommand = new RelayCommand(FindPayerCommandMethod,
+                   () => PayerField.Length != 0
+                ));
             }
         }
+
+        public PayersViewModel()
+        {
+            ViewModelLocator.Instance.DatabaseService.dbHistoryChanged += DatabaseService_dbHistoryChanged;
+        }
+
+        void DatabaseService_dbHistoryChanged(object sender, EventArgs e)
+        {
+            PayersHistory = ViewModelLocator.Instance.DatabaseService.GetHistoryByClient(73881762489);
+        }
+
+        public override void Cleanup()
+        {
+            base.Cleanup();
+            ViewModelLocator.Instance.DatabaseService.dbHistoryChanged -= DatabaseService_dbHistoryChanged;
+        }
+
 
         /// <summary>
         /// The <see cref="PayerField" /> property's name.
         /// </summary>
         public const string PayerFieldPropertyName = "PayerField";
-        private string _payerField = null;
+        private string _payerField = String.Empty;
 
         /// <summary>
         /// Сумма
@@ -42,6 +61,7 @@ namespace projectBOSE.ViewModel
                 if (_payerField == value)
                     return;
                 _payerField = value;
+                this.FindPayerCommand.RaiseCanExecuteChanged();
                 RaisePropertyChanged(PayerFieldPropertyName);
             }
         }

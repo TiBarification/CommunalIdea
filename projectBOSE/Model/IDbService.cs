@@ -14,6 +14,9 @@ namespace projectBOSE.Model
         void AddPaymentToDb(decimal accid, string servicename, long receiver, double payvalue);
         void RemoveClientByAccount(decimal accid);
         void AddClientByAccount(decimal accid, string fname, string lname, int age_);
+
+        event EventHandler dbHistoryChanged;
+
         //ObservableCollection<mark> GetAllMarks();
         //ObservableCollection<Event_Db> GetAllEvents();
         //int GetTotalErdsInDb();

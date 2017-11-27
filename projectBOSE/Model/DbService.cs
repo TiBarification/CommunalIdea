@@ -110,6 +110,8 @@ namespace projectBOSE.Model
                 try
                 {
                     cE.SaveChanges();
+                    if (dbHistoryChanged != null)
+                        dbHistoryChanged(this, new EventArgs());
                 }
                 catch (DbUpdateException)
                 {
@@ -185,5 +187,7 @@ namespace projectBOSE.Model
                 }
             }
         }
+        
+        public event EventHandler dbHistoryChanged;
     }
 }

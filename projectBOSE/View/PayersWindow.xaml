@@ -12,7 +12,7 @@
             <Setter Property="FontSize" Value="14"/>
         </Style>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -22,21 +22,20 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="130"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding PayersHistory, Mode=TwoWay}" AutoGenerateColumns="True" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeColumns="False" SelectionMode="Single" IsReadOnly="True">
+        <DataGrid Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding PayersHistory}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeColumns="False" SelectionMode="Single" IsReadOnly="True">
             <DataGrid.Columns>
-                <!-- <DataGridTextColumn Header="Account Id"  Visibility="Visible"/>
-                <DataGridTextColumn Header="First name" FontFamily="Arial"/>
-                <DataGridTextColumn Header="Last name" FontFamily="Arial"/>
-                <DataGridTextColumn Header="Age" FontFamily="Arial"/>
-                <DataGridTextColumn Header="Service" FontFamily="Arial"/>
-                <DataGridTextColumn Header="Tariff" FontFamily="Arial"/>
-                <DataGridTextColumn Header="Date" FontFamily="Arial"/>
-                <DataGridTextColumn Header="Paid" FontFamily="Arial"/>
-                <DataGridTextColumn Header="Receiver number" FontFamily="Arial"/> -->
-                
+                <DataGridTextColumn Header="Рахунок платника" Binding="{Binding accountid, Mode=OneWay}" Visibility="Visible"/>
+                <DataGridTextColumn Header="Ім'я" Binding="{Binding firstname}" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Прізвище" Binding="{Binding lastname}" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Вік" Binding="{Binding age}" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Послуга" Binding="{Binding name}" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Тариф" Binding="{Binding tariff}" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding by_date}" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Оплачено" Binding="{Binding paid}" FontFamily="Arial"/>
+                <DataGridTextColumn Header="Рахунок отримувача" Binding="{Binding receiver}"  FontFamily="Arial"/>
             </DataGrid.Columns>
-        </DataGrid>            
-        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding PayerField}" />
+        </DataGrid>
+        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding Path=PayerField, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"/>
         <Button Grid.Row="1" Grid.Column="1" Content="Пошук" Command="{Binding FindPayerCommand}"/>
     </Grid>
 </Window>
